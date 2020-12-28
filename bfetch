@@ -26,7 +26,7 @@ RAM=$(echo "$((`cat /proc/meminfo | grep MemTotal | awk '{print $2}'`/1024))")
 RAM_USED=$(echo $((`cat /proc/meminfo | grep MemAvailable | awk '{print $2}'`/1024)))
 RAM_USED=$(echo $((RAM-RAM_USED)))
 UPTIME=`echo $(uptime | awk '{print $3}' | sed 's/,//g' | sed 's/\:/h /g')m`
-HOSTNAME=`hostnamectl | head -n 1 | awk '{print $3}'`
+HOSTNAME=`cat /etc/hostname`
 USERNAME=`whoami`
 
 echo -e "${BLUE}┏━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
